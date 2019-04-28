@@ -34,5 +34,6 @@ public class MoneyBurst : MonoBehaviour
     public void Emit()
     {
         particles.Play();
+        AudioManager.Instance.PlayMoneyClip();
     }
 }

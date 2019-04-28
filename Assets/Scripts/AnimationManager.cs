@@ -40,7 +40,7 @@ public class AnimationManager : MonoBehaviour
             case MoveType.Tired:
                 Instance.Tired();
                 break;
-            case MoveType.Knife:
+            case MoveType.Stab:
                 Instance.Knife();
                 break;
             default:

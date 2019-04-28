@@ -18,6 +18,7 @@ public class Health : MonoBehaviour
     [HideInInspector]
     public float health;
 
+
     public static Health Instance;
 
     private void Awake()

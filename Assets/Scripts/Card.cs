@@ -20,5 +20,6 @@ public enum MoveType
     ThumbsUp,
     Water,
     Tired,
-    Knife
+    Stab,
+    RepeatLast
 }

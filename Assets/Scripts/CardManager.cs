@@ -14,6 +14,9 @@ public class CardManager : MonoBehaviour
 
     public Animator cardsAnimations;
 
+    //Repeat
+    Card lastCardUsed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,10 +50,24 @@ public class CardManager : MonoBehaviour
         if (GameManager.gameIsOver)
             return;
 
+        MoveType move = card.move;
+        float damages = card.damages;
+
+        //If it's a repeat card, use last card used values except time
+        if (card.move == MoveType.RepeatLast && lastCardUsed!=null)
+        {
+            move = lastCardUsed.move;
+            damages = lastCardUsed.damages;
+        }
+        else
+        {
+            lastCardUsed = card;
+        }
 
         Debug.Log("Used card " + card.move.ToString());
-        Health.Instance.Damages(card.damages);
-        AnimationManager.PlayAnimation(card.move);
+        Health.Instance.Damages(damages);
+        AnimationManager.PlayAnimation(move);
+        AudioManager.Instance.PlaySound(move);
 
         cardsAnimations.SetBool("Show", false);
         cardsAnimations.SetBool("Left", left);
